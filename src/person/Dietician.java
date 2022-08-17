@@ -3,7 +3,7 @@ package person;
 import recipe.InputOutputFile;
 import recipe.CreateRecipe;
 import recipe.Recipe;
-import utils.Display;
+import recipe.RecipeList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,11 @@ public class Dietician extends Person {
     public void handleOption(int selectedOption) {
         InputOutputFile ioFile = new InputOutputFile();
         CreateRecipe readFromUser = new CreateRecipe(recipeList);
+        RecipeList recipeList1 = new RecipeList(recipeList);
         switch (selectedOption) {
             case 1 -> {
                 System.out.println("List of recipes");
-                Display.viewRecipes(recipeList);
+                recipeList1.displayRecipesList();
             }
             case 2 -> System.out.println("View recipe");
             case 3 -> recipeList = readFromUser.addTask();
