@@ -1,5 +1,7 @@
 package person;
 
+import utils.Display;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,8 +18,8 @@ abstract public class Person {
             handleOption(selectedOption);
         }
         catch (NumberFormatException | IndexOutOfBoundsException exception) {
-            printInvalidOption();
-            printChoiceSelection();
+            Display.printInvalidOption();
+            Display.printChoiceSelection();
             requestUserInput();
         }
     }
@@ -30,13 +32,5 @@ abstract public class Person {
 
             System.out.println("[" + number + "] " + label);
         }
-    }
-
-    public void printInvalidOption() {
-        System.out.println("⚠️ Invalid option");
-    }
-
-    public void printChoiceSelection() {
-        System.out.print("Selected an option: ");
     }
 }
