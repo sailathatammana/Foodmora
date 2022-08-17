@@ -21,6 +21,6 @@ public class MainMenuView {
     }
 
     public void printChoiceSelection() {
-        System.out.print("Selected User:");
+        System.out.print("Selected User: ");
     }
 }
