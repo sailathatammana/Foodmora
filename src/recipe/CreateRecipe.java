@@ -10,7 +10,7 @@ public class CreateRecipe {
         this.recipe = recipe;
     }
 
-    public ArrayList<Recipe> addTask() {
+    public ArrayList<Recipe> addRecipe() {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the tittle of the recipe: ");
@@ -49,5 +49,33 @@ public class CreateRecipe {
             ingredients.add(i);
         }
         return ingredients;
+    }
+
+    public void recipeToUpdate(Recipe recipe) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Enter recipe Details to Update:");
+
+            System.out.print("Recipe Title(Press enter if you do not want to change the title): ");
+            String title = scanner.nextLine();
+            if (!title.trim().equals("")) {
+                recipe.setTitle(title);
+            }
+            System.out.println("Ingredients List(Press enter if you do not want to change the project): ");
+            ArrayList<String> ingredients = addIngredients(scanner);
+            if (ingredients.size() != 0) {
+                recipe.setIngredients(ingredients);
+            }
+            System.out.print("Steps List(Press enter if you do not want to change the project): ");
+            ArrayList<String> steps = addSteps(scanner);
+            if (steps.size() != 0) {
+                recipe.setSteps(steps);
+            }
+
+            System.out.println("Recipe updated successfully ");
+
+        } catch (Exception e) {
+            System.out.println("Recipe not Updated:" + e.getMessage());
+        }
     }
 }

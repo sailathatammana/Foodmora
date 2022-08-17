@@ -24,6 +24,7 @@ public class Dietician extends Person {
     }
 
     public void handleOption(int selectedOption) {
+        boolean listHasRecipes;
         InputOutputFile ioFile = new InputOutputFile();
         CreateRecipe readFromUser = new CreateRecipe(recipeList);
         RecipeList recipeList1 = new RecipeList(recipeList);
@@ -31,13 +32,22 @@ public class Dietician extends Person {
             case 1 -> {
                 System.out.println("List of recipes");
                 recipeList1.displayRecipesList();
+                break;
             }
             case 2 -> System.out.println("View recipe");
-            case 3 -> recipeList = readFromUser.addTask();
-            case 4 -> System.out.println("Update a new recipe");
+            case 3 -> {
+                recipeList = readFromUser.addRecipe();
+                break;
+            }
+            case 4 -> {
+                listHasRecipes = recipeList1.listHasRecipes();
+                if (listHasRecipes) {
+                    recipeList1.editRecipe(scanner.nextLine());
+                }
+            }
             case 5 -> {
                 System.out.println("Good Bye");
-                ioFile.writeTaskObj(fileName, recipeList);
+                ioFile.writeRecipeObj(fileName, recipeList);
                 System.exit(1);
             }
             default -> throw new IndexOutOfBoundsException();

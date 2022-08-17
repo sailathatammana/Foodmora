@@ -26,7 +26,7 @@ public class MainMenuModel {
     public void handleOption(int selectedOption) throws IndexOutOfBoundsException {
         ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
         InputOutputFile ioFile = new InputOutputFile();
-        recipeList = ioFile.readTasksFromFile(fileName);
+        recipeList = ioFile.readRecipesFromFile(fileName);
         Dietician dietician = new Dietician(recipeList, fileName);
         switch (selectedOption) {
             case 1 -> {

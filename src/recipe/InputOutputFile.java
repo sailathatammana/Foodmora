@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class InputOutputFile {
     ArrayList<Recipe> recipeList = new ArrayList<>();
 
-    public ArrayList<Recipe> readTasksFromFile(String fileName) {
+    public ArrayList<Recipe> readRecipesFromFile(String fileName) {
         try {
             if (!Files.isReadable(Paths.get(fileName))) {
                 System.out.println(" The data file does not exist, Creating a new data file ");
@@ -27,14 +27,14 @@ public class InputOutputFile {
         return recipeList;
     }
 
-    public void writeTaskObj(String filename, ArrayList<Recipe> recipe) {
+    public void writeRecipeObj(String filename, ArrayList<Recipe> recipe) {
         try {
             FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream output = new ObjectOutputStream(file);
             output.writeObject(recipe);
             output.close();
             file.close();
-            System.out.println("Tasks saved to the file");
+            System.out.println("Recipes saved to the file");
 
         } catch (IOException e) {
             System.out.println("File doesn't found" + e);
