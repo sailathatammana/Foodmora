@@ -1,15 +1,15 @@
 package mainMenu;
 
+import utils.Display;
+
 import java.util.Scanner;
 
 public class MainMenuController {
     private final MainMenuModel model;
-    private final MainMenuView view;
     private final Scanner scanner;
 
-    public MainMenuController(MainMenuModel model, MainMenuView view) {
+    public MainMenuController(MainMenuModel model) {
         this.model = model;
-        this.view = view;
         this.scanner = new Scanner(System.in);
     }
 
@@ -22,8 +22,8 @@ public class MainMenuController {
             model.handleOption(selectedOption);
         }
         catch (NumberFormatException | IndexOutOfBoundsException exception) {
-            view.printInvalidOption();
-            view.printChoiceSelection();
+            Display.printInvalidOption();
+            Display.printChoiceSelection();
             requestUserInput();
         }
     }
