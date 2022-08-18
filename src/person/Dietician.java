@@ -32,13 +32,13 @@ public class Dietician extends Person {
             case 1 -> {
                 System.out.println("List of recipes");
                 recipeList1.displayRecipesList();
-                break;
             }
-            case 2 -> System.out.println("View recipe");
-            case 3 -> {
-                recipeList = readFromUser.addRecipe();
-                break;
+            case 2 -> {
+                recipeList1.printSelection();
+                recipeList1.request();
             }
+            case 3 -> recipeList = readFromUser.addRecipe();
+
             case 4 -> {
                 listHasRecipes = recipeList1.listHasRecipes();
                 if (listHasRecipes) {
