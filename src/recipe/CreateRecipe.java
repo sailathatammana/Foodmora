@@ -15,8 +15,10 @@ public class CreateRecipe {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the tittle of the recipe: ");
             String title = scanner.nextLine();
-            ArrayList<String> ingredients = addIngredients(scanner);
-            ArrayList<String> steps = addSteps(scanner);
+            System.out.println("Enter the ingredients: ");
+            ArrayList<String> ingredients = addData(scanner);
+            System.out.println("Enter the steps: ");
+            ArrayList<String> steps = addData(scanner);
             this.recipe.add(new Recipe(title, ingredients, steps));
             System.out.println("Recipe added to the list successfully");
         } catch (Exception e) {
@@ -25,30 +27,16 @@ public class CreateRecipe {
         return recipe;
     }
 
-    private ArrayList<String> addSteps(Scanner scanner) {
-        System.out.println("Enter the steps: ");
-        ArrayList<String> steps = new ArrayList<String>();
+    private ArrayList<String> addData(Scanner scanner) {
+        ArrayList<String> data = new ArrayList<String>();
         while (scanner.hasNextLine()) {
             String i = scanner.nextLine();
             if (i.startsWith(" ")) {
                 break;
             }
-            steps.add(i);
+            data.add(i);
         }
-        return steps;
-    }
-
-    private ArrayList<String> addIngredients(Scanner scanner) {
-        System.out.println("Enter the ingredients: ");
-        ArrayList<String> ingredients = new ArrayList<String>();
-        while (scanner.hasNextLine()) {
-            String i = scanner.nextLine();
-            if (i.startsWith(" ")) {
-                break;
-            }
-            ingredients.add(i);
-        }
-        return ingredients;
+        return data;
     }
 
     public void recipeToUpdate(Recipe recipe) {
@@ -62,18 +50,16 @@ public class CreateRecipe {
                 recipe.setTitle(title);
             }
             System.out.println("Ingredients List(Press enter if you do not want to change the project): ");
-            ArrayList<String> ingredients = addIngredients(scanner);
+            ArrayList<String> ingredients = addData(scanner);
             if (ingredients.size() != 0) {
                 recipe.setIngredients(ingredients);
             }
             System.out.print("Steps List(Press enter if you do not want to change the project): ");
-            ArrayList<String> steps = addSteps(scanner);
+            ArrayList<String> steps = addData(scanner);
             if (steps.size() != 0) {
                 recipe.setSteps(steps);
             }
-
             System.out.println("Recipe updated successfully ");
-
         } catch (Exception e) {
             System.out.println("Recipe not Updated:" + e.getMessage());
         }
