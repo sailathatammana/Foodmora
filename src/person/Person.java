@@ -19,9 +19,13 @@ abstract public class Person {
         }
         catch (NumberFormatException | IndexOutOfBoundsException exception) {
             Display.printInvalidOption();
-            Display.printChoiceSelection();
+            viewBanner();
             requestUserInput();
         }
+    }
+
+    public void viewBanner() {
+        System.out.print("Choose an option: ");
     }
 
     public void optionList(List<String> options) {

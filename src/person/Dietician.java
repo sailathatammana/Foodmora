@@ -1,9 +1,6 @@
 package person;
 
-import recipe.InputOutputFile;
-import recipe.CreateRecipe;
-import recipe.Recipe;
-import recipe.RecipeList;
+import recipe.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +14,7 @@ public class Dietician extends Person {
         this.fileName = file;
     }
 
-    public final List<String> menuOptions = List.of("List recipes", "View recipe", "Create a new recipe", "Update a new recipe", "Save & quit");
+    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Save & quit");
 
     public List<String> getMenuOptions() {
         return menuOptions;
@@ -28,6 +25,7 @@ public class Dietician extends Person {
         InputOutputFile ioFile = new InputOutputFile();
         CreateRecipe readFromUser = new CreateRecipe(recipeList);
         RecipeList recipeList1 = new RecipeList(recipeList);
+        EditRecipe editRecipe = new EditRecipe(recipeList);
         switch (selectedOption) {
             case 1 -> {
                 System.out.println("List of recipes");
@@ -42,7 +40,7 @@ public class Dietician extends Person {
             case 4 -> {
                 listHasRecipes = recipeList1.listHasRecipes();
                 if (listHasRecipes) {
-                    recipeList1.editRecipe(scanner.nextLine());
+                    editRecipe.updateRequest();
                 }
             }
             case 5 -> {

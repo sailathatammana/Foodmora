@@ -13,7 +13,7 @@ public class RecipeList {
     public RecipeList(ArrayList<Recipe> recipe) {
         this.recipe = recipe;
         createRecipe = new CreateRecipe(recipe);
-        scanner  = new Scanner(System.in);
+        scanner = new Scanner(System.in);
     }
 
     public void displayRecipesList() {
@@ -35,51 +35,29 @@ public class RecipeList {
         }
         for (Recipe recipe1 : recipe)
             System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle() + recipe1.getIngredients());
-        System.out.print("Enter a recipe number: ");
         return true;
     }
 
-    public void editRecipe(String recipeChoice) {
-        try {
-            int input = Integer.parseInt(recipeChoice);
-            Recipe recipe1 = viewRecipe(input);
-            Display.editRecipeMenu();
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    createRecipe.recipeToUpdate(recipe1);
-                    break;
-                case "2":
-                    recipe.remove(recipe1);
-                    System.out.println("Recipe Number " + recipeChoice + " is removed from the List");
-                    break;
-                default:
-                    System.out.println("Unexpected choice : Returning to main menu ");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public Recipe viewRecipe(int choice){
+    public Recipe viewRecipe(int choice) {
         Recipe recipe1 = null;
         try {
             if (choice < 0 || choice >= recipe.size()) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             recipe1 = recipe.get(choice);
-            System.out.println("Selected Recipe is  :" + (choice+1) + "\n" + recipe1.getTitle());
+            System.out.println("Selected Recipe is  :" + (choice + 1) + "\n" + recipe1.getTitle());
         } catch (ArrayIndexOutOfBoundsException e) {
-           Display.printInvalidOption();
+            Display.printInvalidOption();
             printSelection();
             request();
         }
         return recipe1;
     }
 
-    public void request(){
+    public void request() {
         String input = scanner.nextLine();
         try {
-            int selectedOption = Integer.parseInt(input)-1;
+            int selectedOption = Integer.parseInt(input) - 1;
             viewRecipe(selectedOption);
         } catch (NumberFormatException e) {
             Display.printInvalidOption();

@@ -43,7 +43,6 @@ public class CreateRecipe {
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("Enter recipe Details to Update:");
-
             System.out.print("Recipe Title(Press enter if you do not want to change the title): ");
             String title = scanner.nextLine();
             if (!title.trim().equals("")) {

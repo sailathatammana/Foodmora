@@ -33,7 +33,7 @@ public class MainMenuModel {
                 while (true) {
                     System.out.println("Please choose one of the following operations");
                     user.optionList(user.getMenuOptions());
-                    Display.printChoiceSelection();
+                    user.viewBanner();
                     user.requestUserInput();
                 }
             }
@@ -41,7 +41,7 @@ public class MainMenuModel {
                 while (true) {
                     System.out.println("Please choose one of the following operations");
                     dietician.optionList(dietician.getMenuOptions());
-                    Display.printChoiceSelection();
+                    dietician.viewBanner();
                     dietician.requestUserInput();
                 }
             }
