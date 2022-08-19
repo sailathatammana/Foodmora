@@ -4,7 +4,6 @@ import person.Dietician;
 import person.User;
 import recipe.InputOutputFile;
 import recipe.Recipe;
-import utils.Display;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +11,6 @@ import java.util.HashMap;
 public class MainMenuModel {
     public static String fileName = "src/test.txt";
     private final HashMap<Integer, String> menuOptions = new HashMap<Integer, String>();
-    User user = new User();
 
     public final void setMenuOptions() {
         menuOptions.put(1, "User");
@@ -28,6 +26,7 @@ public class MainMenuModel {
         InputOutputFile ioFile = new InputOutputFile();
         recipeList = ioFile.readRecipesFromFile(fileName);
         Dietician dietician = new Dietician(recipeList, fileName);
+        User user = new User(recipeList);
         switch (selectedOption) {
             case 1 -> {
                 while (true) {
