@@ -5,7 +5,7 @@ import recipe.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dietician extends Person {
+public class Dietician extends Person implements iDietician {
     ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     String fileName;
 
@@ -21,34 +21,52 @@ public class Dietician extends Person {
     }
 
     public void handleOption(int selectedOption) {
-        boolean listHasRecipes;
-        InputOutputFile ioFile = new InputOutputFile();
-        CreateRecipe readFromUser = new CreateRecipe(recipeList);
-        RecipeList recipeList1 = new RecipeList(recipeList);
-        EditRecipe editRecipe = new EditRecipe(recipeList);
         switch (selectedOption) {
-            case 1 -> {
-                System.out.println("List of recipes");
-                recipeList1.displayRecipesList();
-            }
-            case 2 -> {
-                recipeList1.printSelection();
-                recipeList1.request();
-            }
-            case 3 -> recipeList = readFromUser.addRecipe();
-
-            case 4 -> {
-                listHasRecipes = recipeList1.listHasRecipes();
-                if (listHasRecipes) {
-                    editRecipe.updateRequest();
-                }
-            }
-            case 5 -> {
-                System.out.println("Good Bye");
-                ioFile.writeRecipeObj(fileName, recipeList);
-                System.exit(1);
-            }
+            case 1 -> listRecipes();
+            case 2 -> viewRecipe();
+            case 3 -> createRecipe();
+            case 4 -> updateRecipes();
+            case 5 -> exit();
             default -> throw new IndexOutOfBoundsException();
         }
+    }
+
+    @Override
+    public void createRecipe() {
+        CreateRecipe readFromUser = new CreateRecipe(recipeList);
+        recipeList = readFromUser.addRecipe();
+    }
+
+    @Override
+    public void viewRecipe() {
+        RecipeList recipeList1 = new RecipeList(recipeList);
+        recipeList1.printSelection();
+        recipeList1.request();
+    }
+
+    @Override
+    public void listRecipes() {
+        RecipeList recipeList1 = new RecipeList(recipeList);
+        System.out.println("List of recipes");
+        recipeList1.displayRecipesList();
+    }
+
+    @Override
+    public void updateRecipes() {
+        boolean listHasRecipes;
+        RecipeList recipeList1 = new RecipeList(recipeList);
+        EditRecipe editRecipe = new EditRecipe(recipeList);
+        listHasRecipes = recipeList1.listHasRecipes();
+        if (listHasRecipes) {
+            editRecipe.updateRequest();
+        }
+    }
+
+    @Override
+    public void exit() {
+        InputOutputFile ioFile = new InputOutputFile();
+        ioFile.writeRecipeObj(fileName, recipeList);
+        System.out.println("Good Bye");
+        System.exit(1);
     }
 }

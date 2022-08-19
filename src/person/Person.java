@@ -7,8 +7,11 @@ import java.util.Scanner;
 
 abstract public class Person {
     Scanner scanner = new Scanner(System.in);
+
     abstract List<String> getMenuOptions();
+
     abstract void handleOption(int selectedOption);
+
     public void requestUserInput() {
         String input = scanner.nextLine();
 
@@ -16,8 +19,7 @@ abstract public class Person {
             int selectedOption = Integer.parseInt(input);
 
             handleOption(selectedOption);
-        }
-        catch (NumberFormatException | IndexOutOfBoundsException exception) {
+        } catch (NumberFormatException | IndexOutOfBoundsException exception) {
             Display.printInvalidOption();
             viewBanner();
             requestUserInput();
@@ -31,7 +33,7 @@ abstract public class Person {
     public void optionList(List<String> options) {
 
         for (int index = 0; index < options.size(); index++) {
-            int number = index+1;
+            int number = index + 1;
             String label = options.get(index);
 
             System.out.println("[" + number + "] " + label);
