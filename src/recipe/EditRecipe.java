@@ -29,6 +29,7 @@ public class EditRecipe {
     }
 
     private void updateRecipeOptions(int recipeChoice, Recipe recipe1) throws IndexOutOfBoundsException {
+        System.out.print("Enter your choice: ");
         String choice = scanner.nextLine();
         try {
             int input = Integer.parseInt(choice);

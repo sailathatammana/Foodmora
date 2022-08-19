@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainMenuModel {
-    public static String fileName = "src/test.txt";
+    public String fileName = "src/test.txt";
     private final HashMap<Integer, String> menuOptions = new HashMap<Integer, String>();
 
     public final void setMenuOptions() {

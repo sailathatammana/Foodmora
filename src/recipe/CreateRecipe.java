@@ -1,6 +1,7 @@
 package recipe;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class CreateRecipe {
@@ -15,9 +16,9 @@ public class CreateRecipe {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the tittle of the recipe: ");
             String title = scanner.nextLine();
-            System.out.println("Enter the ingredients: ");
+            System.out.println("Enter the ingredients and enter stop if you are done: ");
             ArrayList<String> ingredients = addData(scanner);
-            System.out.println("Enter the steps: ");
+            System.out.println("Enter the steps and enter stop if you are done: ");
             ArrayList<String> steps = addData(scanner);
             this.recipe.add(new Recipe(title, ingredients, steps));
             System.out.println("Recipe added to the list successfully");
@@ -31,7 +32,7 @@ public class CreateRecipe {
         ArrayList<String> data = new ArrayList<String>();
         while (scanner.hasNextLine()) {
             String i = scanner.nextLine();
-            if (i.startsWith(" ")) {
+            if (Objects.equals(i, "stop")) {
                 break;
             }
             data.add(i);
@@ -48,12 +49,12 @@ public class CreateRecipe {
             if (!title.trim().equals("")) {
                 recipe.setTitle(title);
             }
-            System.out.println("Ingredients List(Press enter if you do not want to change the project): ");
+            System.out.println("Ingredients List(Enter stop if you are done): ");
             ArrayList<String> ingredients = addData(scanner);
             if (ingredients.size() != 0) {
                 recipe.setIngredients(ingredients);
             }
-            System.out.print("Steps List(Press enter if you do not want to change the project): ");
+            System.out.print("Steps List(Enter stop if you are done): ");
             ArrayList<String> steps = addData(scanner);
             if (steps.size() != 0) {
                 recipe.setSteps(steps);
