@@ -19,11 +19,11 @@ public class RecipeList {
     public void displayRecipesList() {
         if (recipe.size() > 0) {
             System.out.println("ID" + "  " + "Title");
+            for (Recipe recipe1 : recipe)
+                System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle());
         } else {
             System.out.println("Recipe list is empty");
         }
-        for (Recipe recipe1 : recipe)
-            System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle());
     }
 
     public boolean listHasRecipes() {

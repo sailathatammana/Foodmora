@@ -47,12 +47,12 @@ public class GenerateWeek {
     }
 
     private ArrayList<Recipe> randomRecipes(ArrayList<Recipe> localRecipe){
-        ArrayList<Recipe> clonedRecipes = new ArrayList<>();
         ArrayList<Recipe> shuffleRecipes = new ArrayList<Recipe>();
-        clonedRecipes =   localRecipe;
-        Collections.shuffle(clonedRecipes,new Random());
+       Recipe[] clonedRecipes =   localRecipe.toArray(new Recipe[0]);
+        List<Recipe> list =Arrays.asList(clonedRecipes);
+        Collections.shuffle(list);
         for (int i = 0; i < 7; ++ i) {
-            shuffleRecipes.add(clonedRecipes.get(i));
+            shuffleRecipes.add(list.get(i));
         }
         return shuffleRecipes;
     }

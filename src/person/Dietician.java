@@ -40,8 +40,12 @@ public class Dietician extends Person implements iDietician {
     @Override
     public void viewRecipe() {
         RecipeList recipeList1 = new RecipeList(recipeList);
-        recipeList1.printSelection();
-        recipeList1.request();
+        if (recipeList.size() == 0) {
+            System.out.println("No recipe are available");
+        } else {
+            recipeList1.printSelection();
+            recipeList1.request();
+        }
     }
 
     @Override

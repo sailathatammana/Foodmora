@@ -40,12 +40,12 @@ public class User extends Person implements iUser {
         WeekList weekList = new WeekList(userWeeks);
         if (userWeeks.size() > 0) {
             System.out.println("List of weeks");
+            for (UserWeek userWeeks1 : userWeeks)
+                System.out.println("[" + userWeeks1.getWeekNo() + "] " + "WeekNo: " + userWeeks1.getWeekNo());
+            weekList.request();
         } else {
             System.out.println("You haven't generated a week.");
         }
-        for (UserWeek userWeeks1 : userWeeks)
-            System.out.println("[" +userWeeks1.getWeekNo() +"] " +  "WeekNo: " + userWeeks1.getWeekNo());
-        weekList.request();
     }
 
     @Override
