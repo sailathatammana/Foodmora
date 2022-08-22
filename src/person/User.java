@@ -14,7 +14,7 @@ public class User extends Person implements iUser {
     ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     ArrayList<UserWeek> userWeeks = new ArrayList<UserWeek>();
     GenerateWeek generateWeek;
-    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View recipe", "Generate a new week", "Switch Role", "Quit");
+    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View recipe", "Generate a new week", "Switch Role", "Save & quit");
 
     public User(ArrayList<Recipe> recipe) {
         this.recipeList = recipe;

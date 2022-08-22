@@ -15,7 +15,7 @@ public class Dietician extends Person implements iDietician {
         this.fileName = file;
     }
 
-    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Quit");
+    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Save & quit");
 
     public List<String> getMenuOptions() {
         return menuOptions;
@@ -77,6 +77,8 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void exit() {
+        InputOutputFile ioFile = new InputOutputFile();
+        ioFile.writeRecipeObj(fileName, recipeList);
         System.out.println("Good Bye");
         System.exit(1);
     }
