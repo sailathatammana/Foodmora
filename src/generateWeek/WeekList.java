@@ -11,7 +11,7 @@ public class WeekList {
     Scanner scanner;
     private final List<String> weekDay = List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
     UserWeek userWeek1 = null;
-    int userWeekIndex= -100;
+    int userWeekIndex = -100;
 
     public WeekList(ArrayList<UserWeek> userWeek) {
         this.userWeeks = userWeek;
@@ -42,8 +42,7 @@ public class WeekList {
                 Calendar startDate = Calendar.getInstance(Locale.GERMANY);
                 int currentWeek = (startDate.get(Calendar.WEEK_OF_YEAR));
                 viewWeek(currentWeek);
-            }
-            else if (Objects.equals(input, "q")) {
+            } else if (Objects.equals(input, "q")) {
                 return;
             } else {
                 int selectedOption = Integer.parseInt(input);
@@ -52,7 +51,7 @@ public class WeekList {
         } catch (NumberFormatException e) {
             Display.printInvalidOption();
             request();
-        }catch (InvalidParameterException p){
+        } catch (InvalidParameterException p) {
             request();
         }
     }
@@ -97,4 +96,3 @@ public class WeekList {
         }
     }
 }
-

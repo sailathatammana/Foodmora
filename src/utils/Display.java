@@ -19,7 +19,8 @@ public class Display {
         System.out.println("Selected Recipe is : " + list.getTitle() + "\n");
         System.out.println("Ingredients:");
         for (int i = 1; i <= list.getIngredients().size(); i++) {
-            System.out.println("[" + i + "]" + " " + list.getIngredients().get(i-1));
+                System.out.println("[" + i + "]" + " " + list.getIngredients().get(i-1).get(0) +  " " + list.getIngredients().get(i-1).get(2) +  list.getIngredients().get(i-1).get(1));
+
         }
         System.out.println("\n" + "Steps:");
         for (int i = 1; i <= list.getSteps().size(); i++) {

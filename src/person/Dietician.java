@@ -2,6 +2,7 @@ package person;
 
 import mainMenu.MainMenu;
 import recipe.*;
+import utils.Display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class Dietician extends Person implements iDietician {
             System.out.println("No recipe are available");
         } else {
             recipeList1.request();
+            Display.exitApplication();
         }
     }
 

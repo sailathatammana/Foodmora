@@ -45,7 +45,6 @@ public class RecipeList {
             }
             recipe1 = recipe.get(choice);
             Display.printRecipeDetails(recipe1);
-            Display.exitApplication();
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ArrayIndexOutOfBoundsException("Invalid Option");
         }
