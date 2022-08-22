@@ -7,12 +7,10 @@ import java.util.Scanner;
 
 public class RecipeList {
     private ArrayList<Recipe> recipe;
-    CreateRecipe createRecipe;
     Scanner scanner;
 
     public RecipeList(ArrayList<Recipe> recipe) {
         this.recipe = recipe;
-        createRecipe = new CreateRecipe(recipe);
         scanner = new Scanner(System.in);
     }
 
@@ -45,7 +43,7 @@ public class RecipeList {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             recipe1 = recipe.get(choice);
-            System.out.println("Selected Recipe is  :" + (choice + 1) + "\n" + recipe1.getTitle());
+            Display.printRecipeDetails(recipe1);
         } catch (ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
             printSelection();

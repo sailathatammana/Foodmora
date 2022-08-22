@@ -75,7 +75,7 @@ public class WeekList {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             Recipe recipe = userWeek1.getRecipes().get(selectedOption);
-            System.out.println("Selected Recipe is: " + recipe.getTitle());
+            Display.printRecipeDetails(recipe);
             System.exit(1);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
