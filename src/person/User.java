@@ -4,6 +4,7 @@ import generateWeek.GenerateWeek;
 import generateWeek.UserWeek;
 import generateWeek.WeekList;
 import mainMenu.MainMenu;
+import recipe.InputOutputFile;
 import recipe.Recipe;
 import recipe.RecipeList;
 
@@ -13,18 +14,20 @@ import java.util.List;
 public class User extends Person implements iUser {
     ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     ArrayList<UserWeek> userWeeks = new ArrayList<UserWeek>();
+    String fileName;
     GenerateWeek generateWeek;
     public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View recipe", "Generate a new week", "Switch Role", "Save & quit");
 
-    public User(ArrayList<Recipe> recipe) {
+    public User(ArrayList<Recipe> recipe, ArrayList<UserWeek> userWeekList, String file) {
         this.recipeList = recipe;
+        this.userWeeks = userWeekList;
+        this.fileName = file;
         generateWeek = new GenerateWeek(userWeeks, recipeList);
     }
 
     public List<String> getMenuOptions() {
         return menuOptions;
     }
-
 
     public void handleOption(int selectedOption) {
         switch (selectedOption) {
@@ -66,11 +69,15 @@ public class User extends Person implements iUser {
 
     @Override
     public void switchRole() {
+        InputOutputFile ioFile = new InputOutputFile();
+        ioFile.writeWeekObj(fileName, userWeeks);
         new MainMenu();
     }
 
     @Override
     public void exit() {
+        InputOutputFile ioFile = new InputOutputFile();
+        ioFile.writeWeekObj(fileName, userWeeks);
         System.out.println("Good Bye");
         System.exit(1);
     }

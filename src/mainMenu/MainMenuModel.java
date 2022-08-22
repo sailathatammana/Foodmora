@@ -1,5 +1,6 @@
 package mainMenu;
 
+import generateWeek.UserWeek;
 import person.Dietician;
 import person.User;
 import recipe.InputOutputFile;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 
 public class MainMenuModel {
     public String fileName = "src/test.txt";
+    public String weekListFile = "src/weekList.txt";
     private final HashMap<Integer, String> menuOptions = new HashMap<Integer, String>();
 
     public final void setMenuOptions() {
@@ -23,10 +25,12 @@ public class MainMenuModel {
 
     public void handleOption(int selectedOption) throws IndexOutOfBoundsException {
         ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
+        ArrayList<UserWeek> userWeekList = new ArrayList<UserWeek>();
         InputOutputFile ioFile = new InputOutputFile();
         recipeList = ioFile.readRecipesFromFile(fileName);
+        userWeekList = ioFile.readWeeksFromFile(weekListFile);
         Dietician dietician = new Dietician(recipeList, fileName);
-        User user = new User(recipeList);
+        User user = new User(recipeList, userWeekList, weekListFile);
         switch (selectedOption) {
             case 1 -> {
                 while (true) {
