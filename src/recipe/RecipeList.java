@@ -19,6 +19,7 @@ public class RecipeList {
             System.out.println("ID" + "  " + "Title");
             for (Recipe recipe1 : recipe)
                 System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle());
+            Display.returnMainMenu();
         } else {
             System.out.println("Recipe list is empty");
         }
@@ -44,27 +45,23 @@ public class RecipeList {
             }
             recipe1 = recipe.get(choice);
             Display.printRecipeDetails(recipe1);
+            Display.exitApplication();
         } catch (ArrayIndexOutOfBoundsException e) {
-            Display.printInvalidOption();
-            printSelection();
-            request();
+            throw new ArrayIndexOutOfBoundsException("Invalid Option");
         }
         return recipe1;
     }
 
     public void request() {
+        System.out.print("Enter a recipe number: ");
         String input = scanner.nextLine();
         try {
             int selectedOption = Integer.parseInt(input) - 1;
             viewRecipe(selectedOption);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
-            printSelection();
             request();
         }
     }
 
-    public void printSelection() {
-        System.out.print("Enter a recipe number: ");
-    }
 }

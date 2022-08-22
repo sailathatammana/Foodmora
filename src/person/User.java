@@ -56,7 +56,6 @@ public class User extends Person implements iUser {
     @Override
     public void viewRecipe() {
         RecipeList recipeList1 = new RecipeList(recipeList);
-        recipeList1.printSelection();
         recipeList1.request();
     }
 
