@@ -1,5 +1,6 @@
 package person;
 
+import mainMenu.MainMenu;
 import recipe.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Dietician extends Person implements iDietician {
         this.fileName = file;
     }
 
-    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Save & quit");
+    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Quit");
 
     public List<String> getMenuOptions() {
         return menuOptions;
@@ -26,7 +27,8 @@ public class Dietician extends Person implements iDietician {
             case 2 -> viewRecipe();
             case 3 -> createRecipe();
             case 4 -> updateRecipes();
-            case 5 -> exit();
+            case 5 -> switchRole();
+            case 6 -> exit();
             default -> throw new IndexOutOfBoundsException();
         }
     }
@@ -67,9 +69,14 @@ public class Dietician extends Person implements iDietician {
     }
 
     @Override
-    public void exit() {
+    public void switchRole() {
         InputOutputFile ioFile = new InputOutputFile();
         ioFile.writeRecipeObj(fileName, recipeList);
+        new MainMenu();
+    }
+
+    @Override
+    public void exit() {
         System.out.println("Good Bye");
         System.exit(1);
     }

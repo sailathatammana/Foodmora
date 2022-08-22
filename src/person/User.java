@@ -3,6 +3,7 @@ package person;
 import generateWeek.GenerateWeek;
 import generateWeek.UserWeek;
 import generateWeek.WeekList;
+import mainMenu.MainMenu;
 import recipe.Recipe;
 import recipe.RecipeList;
 
@@ -13,7 +14,7 @@ public class User extends Person implements iUser {
     ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     ArrayList<UserWeek> userWeeks = new ArrayList<UserWeek>();
     GenerateWeek generateWeek;
-    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View recipe", "Generate a new week", "Quit");
+    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View recipe", "Generate a new week", "Switch Role", "Quit");
 
     public User(ArrayList<Recipe> recipe) {
         this.recipeList = recipe;
@@ -31,7 +32,8 @@ public class User extends Person implements iUser {
             case 2 -> listRecipes();
             case 3 -> viewRecipe();
             case 4 -> userWeeks = generateWeek.addWeek();
-            case 5 -> exit();
+            case 5 -> switchRole();
+            case 6 -> exit();
             default -> throw new IndexOutOfBoundsException();
         }
     }
@@ -60,6 +62,11 @@ public class User extends Person implements iUser {
         RecipeList recipeList1 = new RecipeList(recipeList);
         System.out.println("List of recipes");
         recipeList1.displayRecipesList();
+    }
+
+    @Override
+    public void switchRole() {
+        new MainMenu();
     }
 
     @Override
