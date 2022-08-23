@@ -6,10 +6,10 @@ import java.util.List;
 public class Recipe implements Serializable {
     private int id;
     private String title;
-    private List<String> ingredients;
+    private List<List<String>> ingredients;
     private List<String> steps;
 
-    public Recipe(String title, List<String> ingredients, List<String> steps) {
+    public Recipe(String title, List<List<String>> ingredients, List<String> steps) {
         this.setTitle(title);
         this.setIngredients(ingredients);
         this.setSteps(steps);
@@ -33,11 +33,11 @@ public class Recipe implements Serializable {
         this.title = title.trim();
     }
 
-    public List<String> getIngredients() {
+    public List<List<String>> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<List<String>> ingredients) {
         this.ingredients = ingredients;
     }
 

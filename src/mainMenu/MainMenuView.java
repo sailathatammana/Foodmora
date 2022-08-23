@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class MainMenuView {
     public MainMenuView(HashMap<Integer, String> options) {
+        Display.clearScreen();
         System.out.println("Please choose an user type:");
         optionList(options);
         Display.printChoiceSelection();
