@@ -33,13 +33,18 @@ public class GenerateWeek {
                 System.out.println("Please enter a valid week between " + currentWeek + "(this week) and " + weeksOfYear);
                 throw new DateTimeException("You entered a week is not valid");
             }
-            ArrayList<Recipe> randomRecipes = randomRecipes(recipe);
-            this.userWeek.add(new UserWeek(weekNo, randomRecipes));
-            System.out.println("Week added to the list successfully");
-            Display.returnMainMenu();
+            if (recipe.size() < 7) {
+                throw new IllegalArgumentException("There are no sufficient recipes to generate a week");
+            }
+            else {
+                ArrayList<Recipe> randomRecipes = randomRecipes(recipe);
+                this.userWeek.add(new UserWeek(weekNo, randomRecipes));
+                System.out.println("Week added to the list successfully");
+                Display.returnMainMenu();
+            }
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
-            addWeek();
+            Display.returnMainMenu();
         }
         catch (Exception e) {
             Display.printInvalidOption();

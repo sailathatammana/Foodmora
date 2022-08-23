@@ -2,8 +2,7 @@ package recipe;
 
 import utils.Display;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class EditRecipe {
     private ArrayList<Recipe> recipe;
@@ -30,10 +29,14 @@ public class EditRecipe {
     }
 
     private void updateRecipeOptions(int recipeChoice, Recipe recipe1) throws IndexOutOfBoundsException {
+        System.out.println("Enter `q` to go back to main menu: ");
         System.out.print("Enter your choice: ");
         String choice = scanner.nextLine();
         try {
             Display.clearScreen();
+            if (Objects.equals(choice, "q")) {
+                return;
+            }
             int input = Integer.parseInt(choice);
             if (input < 1 || input > 2) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
@@ -54,14 +57,19 @@ public class EditRecipe {
     }
 
     public void updateRequest() {
-        System.out.print("Enter a recipe number: ");
+        System.out.println("Enter `q` to go back to main menu: ");
+        System.out.println("Enter a recipe number: ");
         String input = scanner.nextLine();
         try {
+            if (Objects.equals(input, "q")) {
+                return;
+            }
             int selectedOption = Integer.parseInt(input) - 1;
             if (selectedOption < 0 || selectedOption > (recipe.size() - 1)) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             updateRecipe(selectedOption);
+
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
             updateRequest();
