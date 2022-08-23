@@ -5,6 +5,10 @@ public interface iUser {
 
     void listRecipes();
 
+    void listMyWeeks();
+
+    void generateWeek();
+
     void switchRole();
 
     void exit();

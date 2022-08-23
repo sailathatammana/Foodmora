@@ -18,6 +18,18 @@ public class WeekList {
         scanner = new Scanner(System.in);
     }
 
+    public void displayWeekList() {
+        if (userWeeks.size() > 0) {
+            Display.clearScreen();
+            System.out.println("List of weeks");
+            for (UserWeek userWeeks1 : userWeeks)
+                System.out.println("[" + userWeeks1.getWeekNo() + "] " + "WeekNo: " + userWeeks1.getWeekNo());
+            request();
+        } else {
+            System.out.println("You haven't generated a week.");
+        }
+    }
+
     public void viewWeek(int choice) {
         try {
             checkWeekNo(choice, userWeeks);

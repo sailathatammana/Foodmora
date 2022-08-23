@@ -8,12 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dietician extends Person implements iDietician {
-    ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-    String fileName;
+    private ArrayList<Recipe> recipeList;
+    private String fileName;
+    private CreateRecipe createRecipe;
+    private RecipeList recipeList1;
+    private EditRecipe editRecipe;
+    private InputOutputFile ioFile;
+
 
     public Dietician(ArrayList<Recipe> recipe, String file) {
         this.recipeList = recipe;
         this.fileName = file;
+        this.createRecipe = new CreateRecipe(recipeList);
+        this.recipeList1 = new RecipeList(recipeList);
+        this.editRecipe = new EditRecipe(recipeList);
+        this.ioFile = new InputOutputFile();
     }
 
     public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Save & quit");
@@ -36,13 +45,11 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void createRecipe() {
-        CreateRecipe readFromUser = new CreateRecipe(recipeList);
-        recipeList = readFromUser.addRecipe();
+        recipeList = createRecipe.addRecipe();
     }
 
     @Override
     public void viewRecipe() {
-        RecipeList recipeList1 = new RecipeList(recipeList);
         if (recipeList.size() == 0) {
             System.out.println("No recipe are available");
         } else {
@@ -54,15 +61,12 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void listRecipes() {
-        RecipeList recipeList1 = new RecipeList(recipeList);
         recipeList1.displayRecipesList();
     }
 
     @Override
     public void updateRecipes() {
         boolean listHasRecipes;
-        RecipeList recipeList1 = new RecipeList(recipeList);
-        EditRecipe editRecipe = new EditRecipe(recipeList);
         listHasRecipes = recipeList1.listHasRecipes();
         if (listHasRecipes) {
             editRecipe.updateRequest();
@@ -71,14 +75,12 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void switchRole() {
-        InputOutputFile ioFile = new InputOutputFile();
         ioFile.writeRecipeObj(fileName, recipeList);
         new MainMenu();
     }
 
     @Override
     public void exit() {
-        InputOutputFile ioFile = new InputOutputFile();
         ioFile.writeRecipeObj(fileName, recipeList);
         System.out.println("Good Bye");
         System.exit(1);
