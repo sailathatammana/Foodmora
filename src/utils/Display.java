@@ -7,6 +7,26 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Display {
+
+    private static void welcomeMsg() {
+        System.out.println("Welcome to Foodmora");
+    }
+
+    public static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                Display.welcomeMsg();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+                Display.welcomeMsg();
+            }
+        } catch (Exception E) {
+            System.out.println(E);
+        }
+    }
+
+
     public static void printInvalidOption() {
         System.out.println("⚠️ Invalid option");
     }
@@ -19,40 +39,38 @@ public class Display {
         System.out.println("Selected Recipe is : " + list.getTitle() + "\n");
         System.out.println("Ingredients:");
         for (int i = 1; i <= list.getIngredients().size(); i++) {
-                System.out.println("[" + i + "]" + " " + list.getIngredients().get(i-1).get(0) +  " " + list.getIngredients().get(i-1).get(2) +  list.getIngredients().get(i-1).get(1));
+            System.out.println("[" + i + "]" + " " + list.getIngredients().get(i - 1).get(0) + " " + list.getIngredients().get(i - 1).get(2) + list.getIngredients().get(i - 1).get(1));
 
         }
         System.out.println("\n" + "Steps:");
         for (int i = 1; i <= list.getSteps().size(); i++) {
-            System.out.println("[" + i + "]" + " " + list.getSteps().get(i-1));
+            System.out.println("[" + i + "]" + " " + list.getSteps().get(i - 1));
         }
         System.out.println();
     }
 
-    public static void exitApplication(){
-        System.out.println("Enter `q` to exit: ");
+    public static void exitApplication() {
+        System.out.print("Press `q` to exit: ");
         Scanner scanner = new Scanner(System.in);
         while ((true)) {
             String option = scanner.nextLine();
             if (Objects.equals(option, "q")) {
                 System.exit(1);
-            }
-            else {
-                System.out.println("You entered wrong input please press q to exit");
+            } else {
+                System.out.print("You entered wrong input please press q to exit: ");
             }
         }
     }
 
-    public static void returnMainMenu(){
-        System.out.println("Press `q` to return to main menu");
+    public static void returnMainMenu() {
+        System.out.print("Press `q` to return to main menu: ");
         Scanner scanner = new Scanner(System.in);
         while ((true)) {
             String option = scanner.nextLine();
             if (Objects.equals(option, "q")) {
                 return;
-            }
-            else {
-                System.out.println("You entered wrong input please press q to return to main menu");
+            } else {
+                System.out.print("You entered wrong input please press q to return to main menu: ");
             }
         }
     }

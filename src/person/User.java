@@ -7,6 +7,7 @@ import mainMenu.MainMenu;
 import recipe.InputOutputFile;
 import recipe.Recipe;
 import recipe.RecipeList;
+import utils.Display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,12 @@ public class User extends Person implements iUser {
     @Override
     public void viewRecipe() {
         RecipeList recipeList1 = new RecipeList(recipeList);
-        recipeList1.request();
+        if (recipeList.size() == 0) {
+            System.out.println("No recipe are available");
+        } else {
+            recipeList1.request();
+            Display.exitApplication();
+        }
     }
 
     @Override
