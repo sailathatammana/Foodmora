@@ -21,6 +21,7 @@ public class WeekList {
     public void viewWeek(int choice) {
         try {
             checkWeekNo(choice, userWeeks);
+            Display.clearScreen();
             userWeek1 = userWeeks.get(userWeekIndex);
             System.out.println("Selected Week is  :" + choice);
             for (int i = 0; i < 7; ++i) {
@@ -88,6 +89,7 @@ public class WeekList {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             Recipe recipe = userWeek1.getRecipes().get(selectedOption);
+            Display.clearScreen();
             Display.printRecipeDetails(recipe);
             Display.exitApplication();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {

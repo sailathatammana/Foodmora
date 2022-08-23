@@ -45,6 +45,7 @@ public class User extends Person implements iUser {
     public void listMyWeeks() {
         WeekList weekList = new WeekList(userWeeks);
         if (userWeeks.size() > 0) {
+            Display.clearScreen();
             System.out.println("List of weeks");
             for (UserWeek userWeeks1 : userWeeks)
                 System.out.println("[" + userWeeks1.getWeekNo() + "] " + "WeekNo: " + userWeeks1.getWeekNo());
@@ -60,6 +61,7 @@ public class User extends Person implements iUser {
         if (recipeList.size() == 0) {
             System.out.println("No recipe are available");
         } else {
+            Display.clearScreen();
             recipeList1.request();
             Display.exitApplication();
         }

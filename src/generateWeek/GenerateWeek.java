@@ -19,6 +19,7 @@ public class GenerateWeek {
         int currentWeek = (startDate.get(Calendar.WEEK_OF_YEAR));
         int weeksOfYear = Calendar.getInstance().getActualMaximum(Calendar.WEEK_OF_YEAR);
         try {
+            Display.clearScreen();
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the week no: ");
             String week = scanner.nextLine();
@@ -35,6 +36,7 @@ public class GenerateWeek {
             ArrayList<Recipe> randomRecipes = randomRecipes(recipe);
             this.userWeek.add(new UserWeek(weekNo, randomRecipes));
             System.out.println("Week added to the list successfully");
+            Display.returnMainMenu();
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             addWeek();

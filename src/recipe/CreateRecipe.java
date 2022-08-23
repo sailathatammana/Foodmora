@@ -1,5 +1,7 @@
 package recipe;
 
+import utils.Display;
+
 import java.util.*;
 
 public class CreateRecipe {
@@ -11,6 +13,7 @@ public class CreateRecipe {
 
     public ArrayList<Recipe> addRecipe() {
         try {
+            Display.clearScreen();
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the tittle of the recipe: ");
             String title = scanner.nextLine();
@@ -19,6 +22,7 @@ public class CreateRecipe {
             ArrayList<String> steps = addData(scanner);
             this.recipe.add(new Recipe(title, ingredients, steps));
             System.out.println("Recipe added to the list successfully");
+            Display.returnMainMenu();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -82,12 +86,13 @@ public class CreateRecipe {
             if (ingredients.size() != 0) {
                 recipe.setIngredients(ingredients);
             }
-            System.out.print("Steps List(Enter stop if you are done): ");
+            System.out.println("Steps List(Enter stop if you are done): ");
             ArrayList<String> steps = addData(scanner);
             if (steps.size() != 0) {
                 recipe.setSteps(steps);
             }
             System.out.println("Recipe updated successfully ");
+            Display.returnMainMenu();
         } catch (Exception e) {
             System.out.println("Recipe not Updated:" + e.getMessage());
         }

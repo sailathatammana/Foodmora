@@ -46,6 +46,7 @@ public class Dietician extends Person implements iDietician {
         if (recipeList.size() == 0) {
             System.out.println("No recipe are available");
         } else {
+            Display.clearScreen();
             recipeList1.request();
             Display.exitApplication();
         }
@@ -54,7 +55,6 @@ public class Dietician extends Person implements iDietician {
     @Override
     public void listRecipes() {
         RecipeList recipeList1 = new RecipeList(recipeList);
-        System.out.println("List of recipes");
         recipeList1.displayRecipesList();
     }
 

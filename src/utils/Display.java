@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Display {
 
     private static void welcomeMsg() {
-        System.out.println("Welcome to Foodmora");
+        System.out.println("Welcome to Foodmora \n");
     }
 
     public static void clearScreen() {
@@ -40,7 +40,6 @@ public class Display {
         System.out.println("Ingredients:");
         for (int i = 1; i <= list.getIngredients().size(); i++) {
             System.out.println("[" + i + "]" + " " + list.getIngredients().get(i - 1).get(0) + " " + list.getIngredients().get(i - 1).get(2) + list.getIngredients().get(i - 1).get(1));
-
         }
         System.out.println("\n" + "Steps:");
         for (int i = 1; i <= list.getSteps().size(); i++) {

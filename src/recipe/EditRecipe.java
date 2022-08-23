@@ -20,6 +20,7 @@ public class EditRecipe {
 
     public void updateRecipe(int recipeChoice) {
         try {
+            Display.clearScreen();
             Recipe recipe1 = recipeList.viewRecipe(recipeChoice);
             Display.editRecipeMenu();
             updateRecipeOptions(recipeChoice, recipe1);
@@ -32,6 +33,7 @@ public class EditRecipe {
         System.out.print("Enter your choice: ");
         String choice = scanner.nextLine();
         try {
+            Display.clearScreen();
             int input = Integer.parseInt(choice);
             if (input < 1 || input > 2) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
@@ -41,6 +43,7 @@ public class EditRecipe {
                 case 2 -> {
                     recipe.remove(recipe1);
                     System.out.println("Recipe Number " + (recipeChoice + 1) + " is removed from the List");
+                    Display.returnMainMenu();
                 }
                 default -> System.out.println("Unexpected choice : Returning to main menu ");
             }
