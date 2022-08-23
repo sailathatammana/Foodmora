@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainMenuModel {
-    private String fileName = "src/test.txt";
-    private String weekListFile = "src/weekList.txt";
-    private final HashMap<Integer, String> menuOptions = new HashMap<Integer, String>();
+    private final String fileName = "src/test.txt";
+    private final String weekListFile = "src/weekList.txt";
+    private final HashMap<Integer, String> menuOptions = new HashMap<>();
 
     public final void setMenuOptions() {
         menuOptions.put(1, "User");
