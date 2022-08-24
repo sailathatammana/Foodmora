@@ -24,11 +24,8 @@ public class EditRecipe {
         try {
             if (Display.checkInput(input)) return;
             int selectedOption = Integer.parseInt(input) - 1;
-            if (selectedOption < 0 || selectedOption > (recipe.size() - 1)) {
-                throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
-            }
+            recipeList.validateListSize(selectedOption);
             updateRecipe(selectedOption);
-
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
             updateRequest();

@@ -40,20 +40,6 @@ public class RecipeList {
         return true;
     }
 
-    public Recipe viewRecipe(int choice) {
-        Recipe recipe1 = null;
-        try {
-            if (choice < 0 || choice >= recipe.size()) {
-                throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
-            }
-            recipe1 = recipe.get(choice);
-            Display.printRecipeDetails(recipe1);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Invalid Option");
-        }
-        return recipe1;
-    }
-
     public void request() {
         System.out.print("Enter a recipe number: ");
         String input = scanner.nextLine();
@@ -63,6 +49,24 @@ public class RecipeList {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
             request();
+        }
+    }
+
+    public Recipe viewRecipe(int choice) {
+        Recipe recipe1 = null;
+        try {
+            validateListSize(choice);
+            recipe1 = recipe.get(choice);
+            Display.printRecipeDetails(recipe1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new ArrayIndexOutOfBoundsException("Invalid Option");
+        }
+        return recipe1;
+    }
+
+    public void validateListSize(int choice) {
+        if (choice < 0 || choice >= recipe.size()) {
+            throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
         }
     }
 }

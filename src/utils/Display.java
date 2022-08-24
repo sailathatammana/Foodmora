@@ -69,4 +69,8 @@ public class Display {
         System.out.println("1. Edit a selected recipe");
         System.out.println("2. Remove a recipe");
     }
+
+    public static boolean validateInput(String input) {
+        return Objects.equals(input.toLowerCase(), "stop");
+    }
 }
