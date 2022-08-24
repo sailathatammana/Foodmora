@@ -35,6 +35,10 @@ public class Display {
         System.out.print("Selected User: ");
     }
 
+    public static boolean checkInput(String input) {
+        return Objects.equals(input, "q");
+    }
+
     public static void printRecipeDetails(Recipe list) {
         System.out.println("Selected Recipe is : " + list.getTitle() + "\n");
         System.out.println("Ingredients:");
@@ -45,20 +49,6 @@ public class Display {
         for (int i = 1; i <= list.getSteps().size(); i++) {
             System.out.println("[" + i + "]" + " " + list.getSteps().get(i - 1));
         }
-        System.out.println();
-    }
-
-    public static void exitApplication() {
-        System.out.print("Press `q` to exit: ");
-        Scanner scanner = new Scanner(System.in);
-        while ((true)) {
-            String option = scanner.nextLine();
-            if (Objects.equals(option, "q")) {
-                System.exit(1);
-            } else {
-                System.out.print("You entered wrong input please press q to exit: ");
-            }
-        }
     }
 
     public static void returnMainMenu() {
@@ -66,16 +56,15 @@ public class Display {
         Scanner scanner = new Scanner(System.in);
         while ((true)) {
             String option = scanner.nextLine();
-            if (Objects.equals(option, "q")) {
-                return;
-            } else {
+            if (checkInput(option)) return;
+            else {
                 System.out.print("You entered wrong input please press q to return to main menu: ");
             }
         }
     }
 
     public static void editRecipeMenu() {
-        System.out.println("Edit a recipe");
+        System.out.println("\n Edit a recipe");
         System.out.println("-----------");
         System.out.println("1. Edit a selected recipe");
         System.out.println("2. Remove a recipe");

@@ -30,6 +30,29 @@ public class WeekList {
         }
     }
 
+    public void request() {
+        System.out.println("Enter `c` to select current week: ");
+        System.out.println("Enter `q` to go back to main menu: ");
+        System.out.println("Enter a week number: ");
+        String input = scanner.nextLine();
+        try {
+            if (Objects.equals(input, "c")) {
+                Calendar startDate = Calendar.getInstance(Locale.GERMANY);
+                int currentWeek = (startDate.get(Calendar.WEEK_OF_YEAR));
+                viewWeek(currentWeek);
+            } else if (Display.checkInput(input)) return;
+            else {
+                int selectedOption = Integer.parseInt(input);
+                viewWeek(selectedOption);
+            }
+        } catch (NumberFormatException e) {
+            Display.printInvalidOption();
+            request();
+        } catch (InvalidParameterException p) {
+            request();
+        }
+    }
+
     public void viewWeek(int choice) {
         try {
             checkWeekNo(choice, userWeeks);
@@ -42,30 +65,6 @@ public class WeekList {
             requestDay();
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new InvalidParameterException("Invalid week entered");
-        }
-    }
-
-    public void request() {
-        System.out.println("Enter `c` to select current week: ");
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.println("Enter a week number: ");
-        String input = scanner.nextLine();
-        try {
-            if (Objects.equals(input, "c")) {
-                Calendar startDate = Calendar.getInstance(Locale.GERMANY);
-                int currentWeek = (startDate.get(Calendar.WEEK_OF_YEAR));
-                viewWeek(currentWeek);
-            } else if (Objects.equals(input, "q")) {
-                return;
-            } else {
-                int selectedOption = Integer.parseInt(input);
-                viewWeek(selectedOption);
-            }
-        } catch (NumberFormatException e) {
-            Display.printInvalidOption();
-            request();
-        } catch (InvalidParameterException p) {
-            request();
         }
     }
 
@@ -93,9 +92,7 @@ public class WeekList {
         String input = scanner.nextLine();
         int selectedOption = -100;
         try {
-            if (Objects.equals(input, "q")) {
-                return;
-            }
+            if (Display.checkInput(input)) return;
             selectedOption = Integer.parseInt(input) - 1;
             if (selectedOption < 0 || selectedOption >= 7) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
@@ -103,7 +100,7 @@ public class WeekList {
             Recipe recipe = userWeek1.getRecipes().get(selectedOption);
             Display.clearScreen();
             Display.printRecipeDetails(recipe);
-            Display.exitApplication();
+            Display.returnMainMenu();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Display.printInvalidOption();
             requestDay();

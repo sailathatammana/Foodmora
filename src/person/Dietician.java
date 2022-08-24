@@ -55,7 +55,7 @@ public class Dietician extends Person implements iDietician {
         } else {
             Display.clearScreen();
             recipeList1.request();
-            Display.exitApplication();
+            Display.returnMainMenu();
         }
     }
 

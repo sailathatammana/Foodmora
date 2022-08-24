@@ -66,7 +66,7 @@ public class User extends Person implements iUser {
         } else {
             Display.clearScreen();
             recipeList1.request();
-            Display.exitApplication();
+            Display.returnMainMenu();
         }
     }
 
