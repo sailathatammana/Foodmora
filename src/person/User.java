@@ -56,6 +56,7 @@ public class User extends Person implements iUser {
 
     @Override
     public void generateWeek() {
+        Display.clearScreen();
         userWeeks = generateWeek.addWeek();
     }
 

@@ -3,10 +3,11 @@ package utils;
 
 import recipe.Recipe;
 
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Display {
+
+    private static List<String> strings;
 
     private static void welcomeMsg() {
         System.out.println("Welcome to Foodmora \n");
@@ -43,7 +44,8 @@ public class Display {
         System.out.println("Selected Recipe is : " + list.getTitle() + "\n");
         System.out.println("Ingredients:");
         for (int i = 1; i <= list.getIngredients().size(); i++) {
-            System.out.println("[" + i + "]" + " " + list.getIngredients().get(i - 1).get(0) + " " + list.getIngredients().get(i - 1).get(2) + list.getIngredients().get(i - 1).get(1));
+            strings = list.getIngredients().get(i - 1);
+            System.out.println("[" + i + "]" + " " + strings.get(0) + " " + strings.get(2) + strings.get(1));
         }
         System.out.println("\n" + "Steps:");
         for (int i = 1; i <= list.getSteps().size(); i++) {

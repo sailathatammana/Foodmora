@@ -59,7 +59,7 @@ public class WeekList {
             Display.clearScreen();
             userWeek1 = userWeeks.get(userWeekIndex);
             System.out.println("Selected Week is  :" + choice);
-            for (int i = 0; i < 7; ++i) {
+            for (int i = 0; i < weekDay.size(); ++i) {
                 System.out.println("[" + (i + 1) + "] " + weekDay.get(i) + " " + userWeek1.getRecipes().get(i).getTitle());
             }
             requestDay();
@@ -71,10 +71,10 @@ public class WeekList {
     public void checkWeekNo(int choice, ArrayList<UserWeek> userWeeks) {
         try {
             boolean isExists = false;
-            for (UserWeek uw : userWeeks) {
-                if (choice == uw.getWeekNo()) {
+            for (UserWeek weekNo : userWeeks) {
+                if (choice == weekNo.getWeekNo()) {
                     isExists = true;
-                    userWeekIndex = userWeeks.indexOf(uw);
+                    userWeekIndex = userWeeks.indexOf(weekNo);
                 }
             }
             if (!isExists) {
@@ -94,7 +94,7 @@ public class WeekList {
         try {
             if (Display.checkInput(input)) return;
             selectedOption = Integer.parseInt(input) - 1;
-            if (selectedOption < 0 || selectedOption >= 7) {
+            if (selectedOption < 0 || selectedOption >= weekDay.size()) {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             Recipe recipe = userWeek1.getRecipes().get(selectedOption);
