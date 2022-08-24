@@ -36,7 +36,7 @@ public class WeekList {
         System.out.println("Enter a week number: ");
         String input = scanner.nextLine();
         try {
-            if (Objects.equals(input, "c")) {
+            if (Objects.equals(input.toLowerCase(), "c")) {
                 Calendar startDate = Calendar.getInstance(Locale.GERMANY);
                 int currentWeek = (startDate.get(Calendar.WEEK_OF_YEAR));
                 viewWeek(currentWeek);

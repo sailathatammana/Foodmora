@@ -36,7 +36,7 @@ public class Display {
     }
 
     public static boolean checkInput(String input) {
-        return Objects.equals(input, "q");
+        return Objects.equals(input.toLowerCase(), "q");
     }
 
     public static void printRecipeDetails(Recipe list) {

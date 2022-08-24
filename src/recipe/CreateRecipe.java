@@ -33,7 +33,7 @@ public class CreateRecipe {
         ArrayList<String> data = new ArrayList<String>();
         while (scanner.hasNextLine()) {
             String i = scanner.nextLine();
-            if (Objects.equals(i, "stop")) {
+            if (Objects.equals(i.toLowerCase(), "stop")) {
                 break;
             }
             data.add(i);
@@ -52,7 +52,8 @@ public class CreateRecipe {
             System.out.println("Please only enter kg or ´l´ for litres or ´pc´ for Quantity");
             while (true) {
                 i = scanner.nextLine();
-                if (Objects.equals(i, "kg") || Objects.equals(i, "l") || Objects.equals(i, "pc")) {
+                String choice = i.toLowerCase();
+                if (Objects.equals(choice, "kg") || Objects.equals(choice, "l") || Objects.equals(choice, "pc")) {
                     item.add(i);
                     break;
                 }
@@ -64,7 +65,7 @@ public class CreateRecipe {
             ingredients.add(item);
             System.out.print("If you are done enter stop or press enter and continue");
             i = scanner.nextLine();
-            if (Objects.equals(i, "stop")) {
+            if (Objects.equals(i.toLowerCase(), "stop")) {
                 break;
             }
             item = new ArrayList<>();
@@ -81,15 +82,21 @@ public class CreateRecipe {
             if (!title.trim().equals("")) {
                 recipe.setTitle(title);
             }
-            System.out.println("Ingredients List(Enter stop if you are done): ");
-            List<List<String>> ingredients = addIngredients(scanner);
-            if (ingredients.size() != 0) {
-                recipe.setIngredients(ingredients);
+            System.out.print("Ingredients(Press enter if you do not want to change or press anything to change): ");
+            String i = scanner.nextLine();
+            if (!(Objects.equals(i, ""))) {
+                List<List<String>> ingredients = addIngredients(scanner);
+                if (ingredients.size() != 0) {
+                    recipe.setIngredients(ingredients);
+                }
             }
-            System.out.println("Steps List(Enter stop if you are done): ");
-            ArrayList<String> steps = addData(scanner);
-            if (steps.size() != 0) {
-                recipe.setSteps(steps);
+            System.out.print("Steps(Press enter if you do not want to change or press anything to change): ");
+            i = scanner.nextLine();
+            if (!(Objects.equals(i, ""))) {
+                ArrayList<String> steps = addData(scanner);
+                if (steps.size() != 0) {
+                    recipe.setSteps(steps);
+                }
             }
             System.out.println("Recipe updated successfully ");
             Display.returnMainMenu();
