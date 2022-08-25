@@ -25,10 +25,12 @@ public class Dietician extends Person implements iDietician {
         this.ioFile = new InputOutputFile();
     }
 
+    @Override
     public List<String> getMenuOptions() {
         return menuOptions;
     }
 
+    @Override
     public void handleOption(int selectedOption) {
         switch (selectedOption) {
             case 1 -> listRecipes();

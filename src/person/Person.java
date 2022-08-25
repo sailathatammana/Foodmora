@@ -8,9 +8,9 @@ import java.util.Scanner;
 abstract public class Person {
     Scanner scanner = new Scanner(System.in);
 
-    abstract List<String> getMenuOptions();
+    public abstract List<String> getMenuOptions();
 
-    abstract void handleOption(int selectedOption);
+    public abstract void handleOption(int selectedOption);
 
     public void requestUserInput() {
         String input = scanner.nextLine();

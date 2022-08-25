@@ -30,10 +30,12 @@ public class User extends Person implements iUser {
         generateWeek = new GenerateWeek(userWeeks, recipe);
     }
 
+    @Override
     public List<String> getMenuOptions() {
         return menuOptions;
     }
 
+    @Override
     public void handleOption(int selectedOption) {
         switch (selectedOption) {
             case 1 -> listMyWeeks();

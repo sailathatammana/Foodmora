@@ -70,7 +70,7 @@ public class GenerateWeek {
     }
 
     private ArrayList<Recipe> randomRecipes(ArrayList<Recipe> localRecipe) {
-        ArrayList<Recipe> shuffleRecipes = new ArrayList<Recipe>();
+        ArrayList<Recipe> shuffleRecipes = new ArrayList<>();
         Recipe[] clonedRecipes = localRecipe.toArray(new Recipe[0]);
         List<Recipe> list = Arrays.asList(clonedRecipes);
         Collections.shuffle(list);

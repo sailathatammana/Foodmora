@@ -30,7 +30,7 @@ public class CreateRecipe {
     }
 
     private List<List<String>> addIngredients(Scanner scanner) {
-        List<List<String>> ingredients = new ArrayList<List<String>>();
+        List<List<String>> ingredients = new ArrayList<>();
         List<String> itemList = new ArrayList<>();
         while (true) {
             System.out.println("Enter the ingredient name");
@@ -64,7 +64,7 @@ public class CreateRecipe {
     }
 
     private ArrayList<String> addSteps(Scanner scanner) {
-        ArrayList<String> data = new ArrayList<String>();
+        ArrayList<String> data = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
             if (Display.validateInput(input)) break;
