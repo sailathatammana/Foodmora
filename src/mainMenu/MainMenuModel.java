@@ -27,8 +27,8 @@ public class MainMenuModel {
         ArrayList<Recipe> recipeList;
         ArrayList<UserWeek> userWeekList;
         InputOutputFile ioFile = new InputOutputFile();
-        recipeList = ioFile.readRecipesFromFile(fileName);
-        userWeekList = ioFile.readWeeksFromFile(weekListFile);
+        recipeList = ioFile.readRecipes(fileName);
+        userWeekList = ioFile.readWeeks(weekListFile);
         Dietician dietician = new Dietician(recipeList, fileName);
         User user = new User(recipeList, userWeekList, weekListFile);
         switch (selectedOption) {

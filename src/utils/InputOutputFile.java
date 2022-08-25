@@ -12,7 +12,7 @@ public class InputOutputFile {
     ArrayList<Recipe> recipeList = new ArrayList<>();
     ArrayList<UserWeek> userWeekList = new ArrayList<>();
 
-    public ArrayList<Recipe> readRecipesFromFile(String fileName) {
+    public ArrayList<Recipe> readRecipes(String fileName) {
         try {
             if (!Files.isReadable(Paths.get(fileName))) {
                 System.out.println(" The data file does not exist, Creating a new data file ");
@@ -31,7 +31,7 @@ public class InputOutputFile {
         return recipeList;
     }
 
-    public void writeRecipeObj(String filename, ArrayList<Recipe> recipe) {
+    public void writeRecipe(String filename, ArrayList<Recipe> recipe) {
         try {
             FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream output = new ObjectOutputStream(file);
@@ -45,7 +45,7 @@ public class InputOutputFile {
         }
     }
 
-    public ArrayList<UserWeek> readWeeksFromFile(String fileName) {
+    public ArrayList<UserWeek> readWeeks(String fileName) {
         try {
             if (!Files.isReadable(Paths.get(fileName))) {
                 System.out.println(" The data file does not exist, Creating a new data file ");
@@ -64,7 +64,7 @@ public class InputOutputFile {
         return userWeekList;
     }
 
-    public void writeWeekObj(String filename, ArrayList<UserWeek> userWeek) {
+    public void writeWeek(String filename, ArrayList<UserWeek> userWeek) {
         try {
             FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream output = new ObjectOutputStream(file);

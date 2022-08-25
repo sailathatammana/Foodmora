@@ -72,13 +72,13 @@ public class User extends Person implements iUser {
 
     @Override
     public void switchRole() {
-        ioFile.writeWeekObj(fileName, userWeeks);
+        ioFile.writeWeek(fileName, userWeeks);
         new MainMenu();
     }
 
     @Override
     public void exit() {
-        ioFile.writeWeekObj(fileName, userWeeks);
+        ioFile.writeWeek(fileName, userWeeks);
         System.out.println("Good Bye");
         System.exit(1);
     }

@@ -70,13 +70,13 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void switchRole() {
-        ioFile.writeRecipeObj(fileName, recipes);
+        ioFile.writeRecipe(fileName, recipes);
         new MainMenu();
     }
 
     @Override
     public void exit() {
-        ioFile.writeRecipeObj(fileName, recipes);
+        ioFile.writeRecipe(fileName, recipes);
         System.out.println("Good Bye");
         System.exit(1);
     }
