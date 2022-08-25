@@ -3,7 +3,6 @@ package mainMenu;
 import utils.Display;
 
 import java.util.Map;
-import java.util.HashMap;
 
 public class MainMenuView {
     public MainMenuView(Map<Integer, String> options) {
