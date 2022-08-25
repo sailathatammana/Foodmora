@@ -10,8 +10,8 @@ import utils.Display;
 import java.util.*;
 
 public class MainMenuModel {
-    private final String fileName = "src/test.txt";
-    private final String weekListFile = "src/weekList.txt";
+    public String fileName = "recipes.txt";
+    public String weekListFile = "weekList.txt";
     private final Map<Integer, String> menuOptions = new HashMap<>();
 
     public final void setMenuOptions() {

@@ -41,7 +41,7 @@ public class CreateRecipe {
             input = scanner.nextLine();
             itemList.add(input);
             ingredients.add(itemList);
-            System.out.print("If you are done enter stop or press enter and continue");
+            System.out.println("If you are done enter stop or press enter and continue");
             input = scanner.nextLine();
             if (Display.validateInput(input)) break;
             itemList = new ArrayList<>();
