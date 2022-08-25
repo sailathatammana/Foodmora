@@ -19,7 +19,7 @@ public class RecipeList {
             Display.clearScreen();
             System.out.println("List of recipes");
             for (Recipe recipe1 : recipe)
-                System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle());
+                System.out.println("[" + (recipe.indexOf(recipe1) + 1) + "]" + "   " + recipe1.getTitle());
         }
     }
 

@@ -65,8 +65,8 @@ public class Display {
     public static void editRecipeMenu() {
         System.out.println("\n Edit a recipe");
         System.out.println("-----------");
-        System.out.println("1. Edit a selected recipe");
-        System.out.println("2. Remove a recipe");
+        System.out.println("[1] Edit a selected recipe");
+        System.out.println("[2] Remove a recipe");
     }
 
     public static boolean validateInput(String input) {
