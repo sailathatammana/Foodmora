@@ -13,25 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Person implements iUser {
-    private ArrayList<Recipe> recipeList;
     private ArrayList<UserWeek> userWeeks;
-    private String fileName;
-    private GenerateWeek generateWeek;
-    private RecipeList recipeList1;
-    private InputOutputFile ioFile;
-    private WeekList weekList;
+    private final String fileName;
+    GenerateWeek generateWeek;
+    RecipeList recipeList;
+    InputOutputFile ioFile;
+    WeekList weekList;
+    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View a recipe with Id", "Generate a new week", "Switch Role", "Save & quit");
 
     public User(ArrayList<Recipe> recipe, ArrayList<UserWeek> userWeekList, String file) {
-        this.recipeList = recipe;
         this.userWeeks = userWeekList;
         this.fileName = file;
-        this.recipeList1 = new RecipeList(recipeList);
+        this.recipeList = new RecipeList(recipe);
         this.ioFile = new InputOutputFile();
         this.weekList = new WeekList(userWeeks);
-        generateWeek = new GenerateWeek(userWeeks, recipeList);
+        generateWeek = new GenerateWeek(userWeeks, recipe);
     }
-
-    public final List<String> menuOptions = List.of("List my weeks", "List recipes", "View a recipe with Id", "Generate a new week", "Switch Role", "Save & quit");
 
     public List<String> getMenuOptions() {
         return menuOptions;
@@ -62,15 +59,15 @@ public class User extends Person implements iUser {
 
     @Override
     public void viewRecipe() {
-        if (recipeList1.listHasRecipes()) {
-            recipeList1.request();
+        if (recipeList.listHasRecipes()) {
+            recipeList.request();
             Display.returnMainMenu();
         }
     }
 
     @Override
     public void listRecipes() {
-        recipeList1.displayRecipesList();
+        recipeList.displayRecipesList();
         Display.returnMainMenu();
     }
 

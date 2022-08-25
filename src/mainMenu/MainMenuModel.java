@@ -7,20 +7,19 @@ import recipe.InputOutputFile;
 import recipe.Recipe;
 import utils.Display;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class MainMenuModel {
     private final String fileName = "src/test.txt";
     private final String weekListFile = "src/weekList.txt";
-    private final HashMap<Integer, String> menuOptions = new HashMap<>();
+    private final Map<Integer, String> menuOptions = new HashMap<>();
 
     public final void setMenuOptions() {
         menuOptions.put(1, "User");
         menuOptions.put(2, "Dietician");
     }
 
-    public HashMap<Integer, String> getMenuOptions() {
+    public Map<Integer, String> getMenuOptions() {
         return menuOptions;
     }
 

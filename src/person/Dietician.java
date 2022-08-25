@@ -8,24 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dietician extends Person implements iDietician {
-    private ArrayList<Recipe> recipeList;
-    private String fileName;
-    private CreateRecipe createRecipe;
-    private RecipeList recipeList1;
-    private EditRecipe editRecipe;
-    private InputOutputFile ioFile;
-
+    private ArrayList<Recipe> recipes;
+    private final String fileName;
+    CreateRecipe createRecipe;
+    RecipeList recipeList;
+    EditRecipe editRecipe;
+    InputOutputFile ioFile;
+    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Save & quit");
 
     public Dietician(ArrayList<Recipe> recipe, String file) {
-        this.recipeList = recipe;
+        this.recipes = recipe;
         this.fileName = file;
-        this.createRecipe = new CreateRecipe(recipeList);
-        this.recipeList1 = new RecipeList(recipeList);
-        this.editRecipe = new EditRecipe(recipeList);
+        this.createRecipe = new CreateRecipe(recipes);
+        this.recipeList = new RecipeList(recipes);
+        this.editRecipe = new EditRecipe(recipes);
         this.ioFile = new InputOutputFile();
     }
-
-    public final List<String> menuOptions = List.of("List recipes", "View a recipe with Id", "Create a new recipe", "Update a new recipe", "Switch Role", "Save & quit");
 
     public List<String> getMenuOptions() {
         return menuOptions;
@@ -45,38 +43,38 @@ public class Dietician extends Person implements iDietician {
 
     @Override
     public void createRecipe() {
-        recipeList = createRecipe.addRecipe();
+        recipes = createRecipe.addRecipe();
     }
 
     @Override
     public void viewRecipe() {
-        if (recipeList1.listHasRecipes()) {
-            recipeList1.request();
+        if (recipeList.listHasRecipes()) {
+            recipeList.request();
             Display.returnMainMenu();
         }
     }
 
     @Override
     public void listRecipes() {
-        recipeList1.displayRecipesList();
+        recipeList.displayRecipesList();
         Display.returnMainMenu();
     }
 
     @Override
     public void updateRecipes() {
-        recipeList1.displayRecipesList();
+        recipeList.displayRecipesList();
         editRecipe.updateRequest();
     }
 
     @Override
     public void switchRole() {
-        ioFile.writeRecipeObj(fileName, recipeList);
+        ioFile.writeRecipeObj(fileName, recipes);
         new MainMenu();
     }
 
     @Override
     public void exit() {
-        ioFile.writeRecipeObj(fileName, recipeList);
+        ioFile.writeRecipeObj(fileName, recipes);
         System.out.println("Good Bye");
         System.exit(1);
     }
