@@ -1,6 +1,6 @@
 # Foodmora
 
-Foodmora is a terminal based application which can be used both by dieticians and users.
+Foodmora is a terminal based application which can be used by both dieticians and users.
 1. Dieticians can create, view, update and delete a recipe.
 2. Users can view list of recipes, generate a diet plan for a week and view the diet plan.
 
@@ -39,7 +39,7 @@ Foodmora is a terminal based application which can be used both by dieticians an
 ## 2. Project organization
 ### 2.1 Requirement gathering
 
-A spreadsheet with the information related to the organization of the project.
+A spreadsheet with the information related to the organization of the project. It includes user-stories, tasks and time estimation.
 
 [Google Spreadsheets link](https://docs.google.com/spreadsheets/d/1G-J1pyi1tTmgKpcCunFrN4rWAiLIGuqqnp2fdOBTlhI/edit#gid=1628705767)
 
@@ -47,7 +47,9 @@ A spreadsheet with the information related to the organization of the project.
 
 A low detail diagram to visualize how the application will work.
 
-[Usecase diagram]()
+[User usecase diagram](https://github.com/sailathatammana/Foodmora/blob/master/Usecasediagrams/User.jpg)
+
+[Dietician usecase diagram](https://github.com/sailathatammana/Foodmora/blob/master/Usecasediagrams/Dietician.jpg)
 
 ### 2.3 Class diagrams
 
