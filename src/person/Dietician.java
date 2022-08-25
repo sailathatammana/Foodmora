@@ -2,7 +2,7 @@ package person;
 
 import mainMenu.MainMenu;
 import recipe.*;
-import utils.Display;
+import utils.*;
 
 import java.util.ArrayList;
 import java.util.List;

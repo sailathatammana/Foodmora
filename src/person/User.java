@@ -1,13 +1,10 @@
 package person;
 
-import generateWeek.GenerateWeek;
-import generateWeek.UserWeek;
-import generateWeek.WeekList;
+import generateWeek.*;
 import mainMenu.MainMenu;
-import recipe.InputOutputFile;
+import utils.*;
 import recipe.Recipe;
 import recipe.RecipeList;
-import utils.Display;
 
 import java.util.ArrayList;
 import java.util.List;

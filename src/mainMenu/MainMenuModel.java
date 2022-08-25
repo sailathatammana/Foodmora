@@ -3,7 +3,7 @@ package mainMenu;
 import generateWeek.UserWeek;
 import person.Dietician;
 import person.User;
-import recipe.InputOutputFile;
+import utils.InputOutputFile;
 import recipe.Recipe;
 import utils.Display;
 
