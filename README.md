@@ -47,21 +47,19 @@ A spreadsheet with the information related to the organization of the project.
 
 A low detail diagram to visualize how the application will work.
 
-[User usecase diagram]()
-
-[Dietician usecase diagram]()
+[Usecase diagram]()
 
 ### 2.3 Class diagrams
 
 The class diagram allows to visualize the overall hierarchy of the project.
 
-[Overview of the project]()
+[Overview of the project](https://bit.ly/3QRRz83)
 
-[Dietician view of class diagram]()
+[Dietician view of class diagram](https://bit.ly/3AqcbgD)
 
-[User view of class diagram]()
+[User view of class diagram](https://bit.ly/3Kjo8tc)
 
-[MainMenu view of class diagram]()
+[MainMenu view of class diagram](https://bit.ly/3KmrNqn)
 
 
 
