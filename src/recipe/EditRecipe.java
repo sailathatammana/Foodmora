@@ -18,8 +18,8 @@ public class EditRecipe {
     }
 
     public void updateRequest() {
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.println("Enter a recipe number: ");
+        System.out.println("Enter `q` to go back to main menu");
+        System.out.print("Enter a recipe number to update \noption: ");
         String input = scanner.nextLine();
         try {
             if (Display.checkInput(input)) return;
@@ -34,7 +34,6 @@ public class EditRecipe {
 
     public void updateRecipe(int recipeChoice) {
         try {
-            Display.clearScreen();
             Recipe recipe1 = recipeList.viewRecipe(recipeChoice);
             Display.editRecipeMenu();
             updateRecipeOptions(recipeChoice, recipe1);
@@ -44,8 +43,8 @@ public class EditRecipe {
     }
 
     private void updateRecipeOptions(int recipeChoice, Recipe recipe1) throws IndexOutOfBoundsException {
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.print("Enter your choice: ");
+        System.out.println("Enter `q` to go back to main menu");
+        System.out.print("Select an choice \nOption: ");
         String choice = scanner.nextLine();
         try {
             Display.clearScreen();

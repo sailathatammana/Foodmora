@@ -31,9 +31,9 @@ public class WeekList {
     }
 
     public void request() {
-        System.out.println("Enter `c` to select current week: ");
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.println("Enter a week number: ");
+        System.out.println("\nEnter `c` to select current week");
+        System.out.println("Enter `q` to go back to main menu");
+        System.out.print("Enter a week number \nOption: ");
         String input = scanner.nextLine();
         try {
             if (Objects.equals(input.toLowerCase(), "c")) {
@@ -87,8 +87,8 @@ public class WeekList {
     }
 
     public void requestDay() {
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.println("Select a day to see recipe details: ");
+        System.out.println("\nEnter `q` to go back to main menu");
+        System.out.print("Select a day to see recipe details \nOption: ");
         String input = scanner.nextLine();
         int selectedOption = -100;
         try {
@@ -98,7 +98,6 @@ public class WeekList {
                 throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
             }
             Recipe recipe = userWeek1.getRecipes().get(selectedOption);
-            Display.clearScreen();
             Display.printRecipeDetails(recipe);
             Display.returnMainMenu();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {

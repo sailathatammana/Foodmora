@@ -41,6 +41,7 @@ public class Display {
     }
 
     public static void printRecipeDetails(Recipe list) {
+        clearScreen();
         System.out.println("Selected Recipe is : " + list.getTitle() + "\n");
         System.out.println("Ingredients:");
         for (int i = 1; i <= list.getIngredients().size(); i++) {

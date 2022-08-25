@@ -62,10 +62,7 @@ public class User extends Person implements iUser {
 
     @Override
     public void viewRecipe() {
-        if (recipeList.size() == 0) {
-            System.out.println("No recipe are available");
-        } else {
-            Display.clearScreen();
+        if (recipeList1.listHasRecipes()) {
             recipeList1.request();
             Display.returnMainMenu();
         }
@@ -73,8 +70,8 @@ public class User extends Person implements iUser {
 
     @Override
     public void listRecipes() {
-        System.out.println("List of recipes");
         recipeList1.displayRecipesList();
+        Display.returnMainMenu();
     }
 
     @Override
