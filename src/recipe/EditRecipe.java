@@ -17,9 +17,23 @@ public class EditRecipe {
         scanner = new Scanner(System.in);
     }
 
+    public void updateRequest() {
+        System.out.println("Enter `q` to go back to main menu");
+        System.out.print("Enter a recipe number to update \noption: ");
+        String input = scanner.nextLine();
+        try {
+            if (Display.checkInput(input)) return;
+            int selectedOption = Integer.parseInt(input) - 1;
+            recipeList.validateListSize(selectedOption);
+            updateRecipe(selectedOption);
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            Display.printInvalidOption();
+            updateRequest();
+        }
+    }
+
     public void updateRecipe(int recipeChoice) {
         try {
-            Display.clearScreen();
             Recipe recipe1 = recipeList.viewRecipe(recipeChoice);
             Display.editRecipeMenu();
             updateRecipeOptions(recipeChoice, recipe1);
@@ -29,26 +43,17 @@ public class EditRecipe {
     }
 
     private void updateRecipeOptions(int recipeChoice, Recipe recipe1) throws IndexOutOfBoundsException {
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.print("Enter your choice: ");
+        System.out.println("Enter `q` to go back to main menu");
+        System.out.print("Select an choice \nOption: ");
         String choice = scanner.nextLine();
         try {
             Display.clearScreen();
-            if (Objects.equals(choice, "q")) {
-                return;
-            }
+            if (Display.checkInput(choice)) return;
             int input = Integer.parseInt(choice);
-            if (input < 1 || input > 2) {
-                throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
-            }
             switch (input) {
                 case 1 -> createRecipe.recipeToUpdate(recipe1);
-                case 2 -> {
-                    recipe.remove(recipe1);
-                    System.out.println("Recipe Number " + (recipeChoice + 1) + " is removed from the List");
-                    Display.returnMainMenu();
-                }
-                default -> System.out.println("Unexpected choice : Returning to main menu ");
+                case 2 -> recipeToDelete(recipeChoice, recipe1);
+                default -> throw new IndexOutOfBoundsException();
             }
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             Display.printInvalidOption();
@@ -56,23 +61,9 @@ public class EditRecipe {
         }
     }
 
-    public void updateRequest() {
-        System.out.println("Enter `q` to go back to main menu: ");
-        System.out.println("Enter a recipe number: ");
-        String input = scanner.nextLine();
-        try {
-            if (Objects.equals(input, "q")) {
-                return;
-            }
-            int selectedOption = Integer.parseInt(input) - 1;
-            if (selectedOption < 0 || selectedOption > (recipe.size() - 1)) {
-                throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
-            }
-            updateRecipe(selectedOption);
-
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            Display.printInvalidOption();
-            updateRequest();
-        }
+    private void recipeToDelete(int recipeChoice, Recipe recipe1) {
+        recipe.remove(recipe1);
+        System.out.println("Recipe Number " + (recipeChoice + 1) + " is removed from the List");
+        Display.returnMainMenu();
     }
 }

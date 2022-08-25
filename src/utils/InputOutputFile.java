@@ -1,6 +1,7 @@
-package recipe;
+package utils;
 
 import generateWeek.UserWeek;
+import recipe.Recipe;
 
 import java.io.*;
 import java.nio.file.Files;

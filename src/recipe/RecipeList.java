@@ -15,43 +15,21 @@ public class RecipeList {
     }
 
     public void displayRecipesList() {
-        if (recipe.size() > 0) {
+        if (listHasRecipes()) {
             Display.clearScreen();
             System.out.println("List of recipes");
-            System.out.println("ID" + "  " + "Title");
             for (Recipe recipe1 : recipe)
                 System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle());
-            Display.returnMainMenu();
-        } else {
-            System.out.println("Recipe list is empty");
         }
     }
 
     public boolean listHasRecipes() {
         if (recipe.size() > 0) {
-            Display.clearScreen();
-            System.out.println("ID" + "  " + "Title");
+            return true;
         } else {
             System.out.println("Recipe list is empty");
             return false;
         }
-        for (Recipe recipe1 : recipe)
-            System.out.println(recipe.indexOf(recipe1) + 1 + "   " + recipe1.getTitle() + recipe1.getIngredients());
-        return true;
-    }
-
-    public Recipe viewRecipe(int choice) {
-        Recipe recipe1 = null;
-        try {
-            if (choice < 0 || choice >= recipe.size()) {
-                throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
-            }
-            recipe1 = recipe.get(choice);
-            Display.printRecipeDetails(recipe1);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Invalid Option");
-        }
-        return recipe1;
     }
 
     public void request() {
@@ -66,4 +44,21 @@ public class RecipeList {
         }
     }
 
+    public Recipe viewRecipe(int choice) {
+        Recipe recipe1 = null;
+        try {
+            validateListSize(choice);
+            recipe1 = recipe.get(choice);
+            Display.printRecipeDetails(recipe1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new ArrayIndexOutOfBoundsException("Invalid Option");
+        }
+        return recipe1;
+    }
+
+    public void validateListSize(int choice) {
+        if (choice < 0 || choice >= recipe.size()) {
+            throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
+        }
+    }
 }
