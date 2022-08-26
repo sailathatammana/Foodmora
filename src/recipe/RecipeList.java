@@ -38,8 +38,12 @@ public class RecipeList {
         try {
             int selectedOption = Integer.parseInt(input) - 1;
             viewRecipe(selectedOption);
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
             Display.printInvalidOption();
+            request();
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
             request();
         }
     }
@@ -51,14 +55,19 @@ public class RecipeList {
             recipe1 = recipe.get(choice);
             Display.printRecipeDetails(recipe1);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Invalid Option");
+            throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List");
+        }
+        catch (NumberFormatException e){
+            throw new NumberFormatException();
         }
         return recipe1;
     }
 
     public void validateListSize(int choice) {
-        if (choice < 0 || choice >= recipe.size()) {
-            throw new ArrayIndexOutOfBoundsException("Recipe selected is not in the List:returning to main menu");
+        if (choice < 0) {
+            throw new NumberFormatException();
+        } else if (choice >= recipe.size()) {
+            throw new ArrayIndexOutOfBoundsException();
         }
     }
 }

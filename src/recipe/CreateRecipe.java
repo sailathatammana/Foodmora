@@ -38,8 +38,7 @@ public class CreateRecipe {
             itemList.add(input);
             addMeasurement(scanner, itemList);
             System.out.println("Enter the quantity");
-            input = scanner.nextLine();
-            itemList.add(input);
+            addQuantity(scanner, itemList);
             ingredients.add(itemList);
             System.out.print("If you are done enter stop or press enter and continue: ");
             input = scanner.nextLine();
@@ -63,6 +62,23 @@ public class CreateRecipe {
         }
     }
 
+    private void addQuantity(Scanner scanner, List<String> itemList) {
+        try {
+            while (true) {
+                String input = scanner.nextLine();
+                float selectedInput = Float.parseFloat(input);
+                if (selectedInput > 0) {
+                    itemList.add(input);
+                    break;
+                }
+                System.out.println("Enter the value of greater than zero");
+            }
+        } catch (NumberFormatException e) {
+            Display.printInvalidOption();
+            addQuantity(scanner,itemList);
+        }
+    }
+
     private ArrayList<String> addSteps(Scanner scanner) {
         ArrayList<String> data = new ArrayList<>();
         while (scanner.hasNextLine()) {
@@ -82,7 +98,7 @@ public class CreateRecipe {
             if (!title.trim().equals("")) {
                 recipe.setTitle(title);
             }
-            System.out.print("Ingredients(Press enter if you do not want to change or press anything to change): ");
+            System.out.print("Ingredients(Press enter if you do not want to change or press anything and enter to change): ");
             String input = scanner.nextLine();
             if (!(Objects.equals(input, ""))) {
                 List<List<String>> ingredients = addIngredients(scanner);
@@ -90,7 +106,7 @@ public class CreateRecipe {
                     recipe.setIngredients(ingredients);
                 }
             }
-            System.out.print("Steps(Press enter if you do not want to change or press anything to change): ");
+            System.out.print("Steps(Press enter if you do not want to change or press anything and enter to change): ");
             input = scanner.nextLine();
             if (!(Objects.equals(input, ""))) {
                 ArrayList<String> steps = addSteps(scanner);
