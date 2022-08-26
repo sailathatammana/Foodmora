@@ -90,6 +90,7 @@ public class CreateRecipe {
     }
 
     public void recipeToUpdate(Recipe recipe) {
+        Display.clearScreen();
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("Enter recipe Details to Update:");

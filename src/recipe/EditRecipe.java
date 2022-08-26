@@ -47,7 +47,6 @@ public class EditRecipe {
         System.out.print("Select an choice \nOption: ");
         String choice = scanner.nextLine();
         try {
-            Display.clearScreen();
             if (Display.checkInput(choice)) return;
             int input = Integer.parseInt(choice);
             switch (input) {
@@ -62,6 +61,7 @@ public class EditRecipe {
     }
 
     private void recipeToDelete(int recipeChoice, Recipe recipe1) {
+        Display.clearScreen();
         recipe.remove(recipe1);
         System.out.println("Recipe Number " + (recipeChoice + 1) + " is removed from the List");
         Display.returnMainMenu();
