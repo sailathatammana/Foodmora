@@ -14,19 +14,13 @@ public class InputOutputFile {
 
     public ArrayList<Recipe> readRecipes(String fileName) {
         try {
-            if (!Files.isReadable(Paths.get(fileName))) {
-                System.out.println(" The data file does not exist, Creating a new data file ");
-            }
+            Files.isReadable(Paths.get(fileName));
             FileInputStream file = new FileInputStream(fileName);
             ObjectInputStream stream = new ObjectInputStream(file);
-            // read recepies from the stream
             recipeList = (ArrayList<Recipe>) stream.readObject();
             stream.close();
             file.close();
-        } catch (IOException e) {
-            System.out.println("File doesn't found " + e);
-        } catch (ClassNotFoundException e) {
-            System.out.println("problems inside the file " + e);
+        } catch (IOException | ClassNotFoundException ignored) {
         }
         return recipeList;
     }
@@ -47,19 +41,13 @@ public class InputOutputFile {
 
     public ArrayList<UserWeek> readWeeks(String fileName) {
         try {
-            if (!Files.isReadable(Paths.get(fileName))) {
-                System.out.println(" The data file does not exist, Creating a new data file ");
-            }
+            Files.isReadable(Paths.get(fileName));
             FileInputStream file = new FileInputStream(fileName);
             ObjectInputStream stream = new ObjectInputStream(file);
-            // read recepies from the stream
             userWeekList = (ArrayList<UserWeek>) stream.readObject();
             stream.close();
             file.close();
-        } catch (IOException e) {
-            System.out.println("File doesn't found " + e);
-        } catch (ClassNotFoundException e) {
-            System.out.println("problems inside the file " + e);
+        } catch (IOException | ClassNotFoundException ignored) {
         }
         return userWeekList;
     }
